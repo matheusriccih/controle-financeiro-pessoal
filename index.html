@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Controle financeiro pessoal para acompanhar saldo, receitas e despesas diretamente no navegador." />
+    <meta name="theme-color" content="#0f766e" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <title>Controle Financeiro Pessoal | Matheus Ricci</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="#inicio" aria-label="Controle Financeiro — início">
+          <span class="brand-mark" aria-hidden="true">R$</span>
+          <span>Controle Financeiro</span>
+        </a>
+        <span class="local-badge">Dados salvos neste navegador</span>
+      </div>
+    </header>
+
+    <main id="inicio" class="container">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Organização financeira pessoal</p>
+          <h1 id="page-title">Tenha clareza sobre o seu dinheiro.</h1>
+          <p class="hero-copy">Registre receitas e despesas, acompanhe seu saldo e mantenha seus dados privados no seu próprio navegador.</p>
+        </div>
+        <div class="initial-balance" aria-label="Definir saldo inicial">
+          <label for="initial-balance">Saldo inicial</label>
+          <div class="currency-field">
+            <span aria-hidden="true">R$</span>
+            <input id="initial-balance" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00" />
+          </div>
+        </div>
+      </section>
+
+      <section class="summary-grid" aria-label="Resumo financeiro">
+        <article class="summary-card balance-card">
+          <span>Saldo atual</span>
+          <strong id="current-balance">R$ 0,00</strong>
+          <small id="balance-description">Defina seu saldo inicial para começar.</small>
+        </article>
+        <article class="summary-card">
+          <span>Receitas</span>
+          <strong class="income" id="total-income">R$ 0,00</strong>
+          <small>Entradas registradas</small>
+        </article>
+        <article class="summary-card">
+          <span>Despesas</span>
+          <strong class="expense" id="total-expense">R$ 0,00</strong>
+          <small>Saídas registradas</small>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <section class="panel form-panel" aria-labelledby="transaction-title">
+          <div class="panel-heading">
+            <p class="eyebrow">Novo lançamento</p>
+            <h2 id="transaction-title">Adicionar movimentação</h2>
+          </div>
+          <form id="transaction-form">
+            <div class="field-group type-options" role="group" aria-labelledby="transaction-type-label">
+              <span id="transaction-type-label">Tipo</span>
+              <div>
+                <label class="type-option"><input type="radio" name="type" value="expense" checked /> <span>Despesa</span></label>
+                <label class="type-option"><input type="radio" name="type" value="income" /> <span>Receita</span></label>
+              </div>
+            </div>
+            <label class="field-group" for="transaction-description">
+              <span>Descrição</span>
+              <input id="transaction-description" name="description" type="text" maxlength="70" placeholder="Ex.: Mercado" required />
+            </label>
+            <div class="form-row">
+              <label class="field-group" for="transaction-date">
+                <span>Data</span>
+                <input id="transaction-date" name="date" type="date" required />
+              </label>
+              <label class="field-group" for="transaction-category">
+                <span>Categoria</span>
+                <select id="transaction-category" name="category">
+                  <option value="Alimentação">Alimentação</option>
+                  <option value="Moradia">Moradia</option>
+                  <option value="Transporte">Transporte</option>
+                  <option value="Saúde">Saúde</option>
+                  <option value="Lazer">Lazer</option>
+                  <option value="Educação">Educação</option>
+                  <option value="Trabalho">Trabalho</option>
+                  <option value="Outros">Outros</option>
+                </select>
+              </label>
+            </div>
+            <label class="field-group" for="transaction-amount">
+              <span>Valor</span>
+              <div class="currency-field"><span aria-hidden="true">R$</span><input id="transaction-amount" name="amount" type="number" inputmode="decimal" min="0.01" step="0.01" placeholder="0,00" required /></div>
+            </label>
+            <button class="primary-button" type="submit">Adicionar lançamento</button>
+            <p id="form-message" class="form-message" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="panel transactions-panel" aria-labelledby="transactions-title">
+          <div class="panel-heading transactions-heading">
+            <div><p class="eyebrow">Histórico</p><h2 id="transactions-title">Suas movimentações</h2></div>
+            <button id="clear-transactions" class="text-button" type="button">Limpar tudo</button>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th scope="col">Lançamento</th><th scope="col">Categoria</th><th scope="col">Data</th><th scope="col">Valor</th><th scope="col"><span class="sr-only">Ações</span></th></tr></thead>
+              <tbody id="transaction-list"></tbody>
+            </table>
+            <div id="empty-state" class="empty-state">
+              <span aria-hidden="true">↗</span>
+              <p>Nenhuma movimentação por enquanto.</p>
+              <small>Seu histórico aparecerá aqui.</small>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="container site-footer"><span>Controle Financeiro Pessoal</span><span>Feito por Matheus Ricci Hamada</span></footer>
+    <script src="assets/js/app.js" defer></script>
+  </body>
+</html>
